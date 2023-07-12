@@ -1,6 +1,5 @@
 import random
 
-
 data_eng = {
     "a": ". _",
     "b": "_ . . .",
@@ -89,7 +88,6 @@ list_of_bg_words = ["е", "т"]
 
 
 def morse_to_eng(data):
-
     digits = random.randint(1, 10)
     morse_output = []
     eng_output = []
@@ -103,13 +101,22 @@ def morse_to_eng(data):
     eng_word = input()
 
     if eng_word == eng_output:
-        return True
+        print("""You are correct
+
+If you want to try again just choose another command.
+If you want to stop the program type "end"
+ 
+Command here:""", end="")
     else:
-        return False
+        print("""You are incorrect
+
+If you want to try again just choose another command.
+If you want to stop the program type "end"
+ 
+Command here:""", end="")
 
 
 def eng_to_morse(data, list_of_words):
-
     eng_word_output = random.choice(list_of_words)
     print(eng_word_output)
 
@@ -117,13 +124,84 @@ def eng_to_morse(data, list_of_words):
 
     morse_eng_word = []
     for t in eng_word_output:
-
         morse_eng_word.append(data[t])
 
     morse_input = input().split("   ")
 
     if morse_input == morse_eng_word:
-        return True
+        print("""You are correct
+
+If you want to try again just choose another command.
+If you want to stop the program type "end"
+
+Command here:""", end="")
+
+    else:
+        print("""You are incorrect
+
+If you want to try again just choose another command.
+If you want to stop the program type "end"
+ 
+Command here:""", end="")
 
 
-print(eng_to_morse(data_bg, list_of_bg_words))
+print("""Hello, this is a program made to help learn morse code.
+If you know how to use this program type the command you want to use then press [Enter].
+If you don`t know how to use this program type "Help" then press [Enter].
+
+Command here:""", end="")
+
+list_of_commands = ["morse to english", "morse to bulgarian", "english to morse", "bulgarian to morse"]
+
+while True:
+
+    command = input()
+
+    if command.lower() == "end":
+        break
+
+    if command.lower() == "help":
+        print("""This program provides four commands.
+    
+Command 1 - morse to english. To get this command type "morse to english".
+If you chose morse to english the console will give you a randomly generated
+sequence of letters in morse code. You need to translate it and type it in to
+the console(in english) if if you are correct the console will print "You are correct"
+else you will be given the option to try again.
+     
+Command 2 - morse to bulgarian. To get this command type "morse to bulgarian".
+if you chose morse to bulgarian the console will give you a randomly generated
+sequence of letters in morse code. You need to translate it and type it in to
+the console(in bulgarian) if if you are correct the console will print "You are correct"
+else you will be given the option to try again.
+    
+Command 3 - english to morse. To get this command type "english to morse".
+If you chose english to morse the console will give you a random english
+word from a list of words. You need to translate it to morse code if you are correct
+the console will print "You are correct" else you will be given
+the option to try again.
+    
+Command 4 - bulgarian to morse. To get this command type "bulgarian to morse".
+If you chose bulgarian to morse the console will give you a random bulgarian
+word from a list of words. You need to translate it to morse code if you are correct
+the console will print "You are correct" else you will be given
+the option to try again.
+    
+Command here:""", end="")
+
+    if command.lower() not in list_of_commands:
+        print("""You have picked an invalid command try again.
+    
+Command here:""", end="")
+
+    if command.lower() == list_of_commands[0]:
+        morse_to_eng(data_eng)
+
+    elif command.lower() == list_of_commands[1]:
+        morse_to_eng(data_bg)
+
+    elif command.lower() == list_of_commands[2]:
+        eng_to_morse(data_eng, list_of_eng_words)
+
+    elif command.lower() == list_of_commands[3]:
+        eng_to_morse(data_bg, list_of_bg_words)
